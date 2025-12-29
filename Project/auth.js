@@ -1,10 +1,15 @@
+/* ===============================
+   ROLE SELECTION
+================================ */
 function selectRole(role) {
   localStorage.setItem("role", role);
   alert("Role selected: " + role);
   window.location.href = "signup.html";
 }
 
-
+/* ===============================
+   SIGNUP LOGIC
+================================ */
 function signup() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -35,6 +40,9 @@ function signup() {
   window.location.href = "login.html";
 }
 
+/* ===============================
+   LOGIN LOGIC
+================================ */
 function login() {
   const email = document.getElementById("loginEmail").value;
 
@@ -53,15 +61,19 @@ function login() {
   localStorage.setItem("isLoggedIn", "true");
   alert("Login successful");
 
+  // Redirect based on role
   if (user.role === "customer") {
-    window.location.href = "../customer-dashboard.html";
+    window.location.href = "customer-dashboard.html";
   } else if (user.role === "helper") {
-    window.location.href = "../helper-dashboard.html";
+    window.location.href = "helper-dashboard.html";
   } else {
-    window.location.href = "../admin-dashboard.html";
+    window.location.href = "admin-dashboard.html";
   }
 }
 
+/* ===============================
+   LOGOUT
+================================ */
 function logout() {
   localStorage.removeItem("isLoggedIn");
   alert("Logged out");
