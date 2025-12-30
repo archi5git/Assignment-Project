@@ -1,4 +1,12 @@
-// Agar user login nahi hai to login page pe bhejo
-if (!localStorage.getItem("isLoggedIn")) {
-  window.location.href = "auth/login.html";
+function protectPage() {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const user = JSON.parse(localStorage.getItem("user"));
+  
+  if (!isLoggedIn || !user) {
+    alert("Please login first!");
+    window.location.href = "login.html"; 
+    return null;
+  }
+  
+  return user;
 }
